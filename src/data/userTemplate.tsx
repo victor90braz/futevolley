@@ -5,7 +5,7 @@ const userTemplate: User[] = [
 		id: "1",
 		name: "victor",
 		email: "victor@gmail.com",
-		github: "victor@github.com",
+		github: "victor90braz",
 		action: "Action",
 	},
 	{

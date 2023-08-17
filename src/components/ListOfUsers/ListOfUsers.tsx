@@ -31,9 +31,21 @@ export function ListOfUsers() {
 				<TableBody>
 					{userTemplate.map((item) => (
 						<TableRow key={item.id}>
-							{keys.map((key) => (
-								<TableCell key={key}>{item[key]}</TableCell>
-							))}
+							<TableCell>{item.id}</TableCell>
+							<TableCell
+								style={{ display: "flex", alignItems: "center", gap: "10px" }}
+							>
+								<img
+									src={`https://unavatar.io/github/${item.github}`}
+									alt={`${item.name}`}
+									style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+								/>
+
+								{item.name}
+							</TableCell>
+							<TableCell>{item.email}</TableCell>
+							<TableCell>{item.github}</TableCell>
+							<TableCell>{item.action}</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
