@@ -25,7 +25,6 @@ export function ListOfUsers() {
 						{keys.map((key) => (
 							<TableHeaderCell key={key}>{key}</TableHeaderCell>
 						))}
-						<TableHeaderCell>Actions</TableHeaderCell>
 					</TableRow>
 				</TableHead>
 
@@ -35,7 +34,6 @@ export function ListOfUsers() {
 							{keys.map((key) => (
 								<TableCell key={key}>{item[key]}</TableCell>
 							))}
-							<TableCell>Actions</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
