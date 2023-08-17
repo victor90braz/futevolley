@@ -1,15 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { User } from "../../data/interface/interface";
-
-const initialUserState: User = {
-	id: "",
-	name: "",
-	email: "",
-	github: "",
-};
+import userTemplate from "../../data/userTemplate";
 
 export const usersSlice = createSlice({
 	name: "users",
-	initialState: initialUserState,
+	initialState: userTemplate,
 	reducers: {},
 });
