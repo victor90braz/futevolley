@@ -8,17 +8,23 @@ import {
 	TableRow,
 } from "@tremor/react";
 import React from "react";
-import userTemplate from "../../data/userTemplate";
+import userTemplate from "../../data/userTemplate.jsx";
 
 export function ListOfUsers() {
+	if (userTemplate.length === 0) {
+		return <div>No users available.</div>;
+	}
+
+	const keys = Object.keys(userTemplate[0]);
+
 	return (
 		<Card>
 			<Table>
 				<TableHead>
 					<TableRow>
-						<TableHeaderCell>Id</TableHeaderCell>
-						<TableHeaderCell>Name</TableHeaderCell>
-						<TableHeaderCell>Email</TableHeaderCell>
+						{keys.map((key) => (
+							<TableHeaderCell key={key}>{key}</TableHeaderCell>
+						))}
 						<TableHeaderCell>Actions</TableHeaderCell>
 					</TableRow>
 				</TableHead>
@@ -26,10 +32,9 @@ export function ListOfUsers() {
 				<TableBody>
 					{userTemplate.map((item) => (
 						<TableRow key={item.id}>
-							<TableCell>{item.id}</TableCell>
-							<TableCell>{item.name}</TableCell>
-							<TableCell>{item.email}</TableCell>
-							<TableCell>{item.github}</TableCell>
+							{keys.map((key) => (
+								<TableCell key={key}>{item[key]}</TableCell>
+							))}
 							<TableCell>Actions</TableCell>
 						</TableRow>
 					))}
