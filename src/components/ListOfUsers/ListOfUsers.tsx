@@ -10,10 +10,10 @@ import {
 	Title,
 } from "@tremor/react";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../../hooks/store";
 
 export function ListOfUsers() {
-	const userTemplate = useSelector((state) => state.users);
+	const userTemplate = useAppSelector((state) => state.users);
 
 	if (userTemplate.length === 0) {
 		return <div>No users available.</div>;
