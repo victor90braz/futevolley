@@ -10,9 +10,11 @@ import {
 	Title,
 } from "@tremor/react";
 import React from "react";
-import userTemplate from "../../data/userTemplate.jsx";
+import { useSelector } from "react-redux";
 
 export function ListOfUsers() {
+	const userTemplate = useSelector((state) => state.users);
+
 	if (userTemplate.length === 0) {
 		return <div>No users available.</div>;
 	}
