@@ -8,33 +8,7 @@ import {
 	TableRow,
 } from "@tremor/react";
 import React from "react";
-
-interface User {
-	id: string;
-	name: string;
-	email: string;
-	github: string;
-}
-
-const users: User[] = [
-	{
-		id: "1",
-		name: "victor",
-		email: "victor@gmail.com",
-		github: "victor@github.com",
-	},
-	{
-		id: "2",
-		name: "bruno",
-		email: "bruno@gmail.com",
-		github: "bruno@github.com",
-	},
-	// ... other user objects ...
-];
-
-const userTemplate: User[] = users;
-
-export default userTemplate;
+import userTemplate from "../../data/userTemplate";
 
 export function ListOfUsers() {
 	return (
@@ -50,7 +24,7 @@ export function ListOfUsers() {
 				</TableHead>
 
 				<TableBody>
-					{users.map((item) => (
+					{userTemplate.map((item) => (
 						<TableRow key={item.id}>
 							<TableCell>{item.id}</TableCell>
 							<TableCell>{item.name}</TableCell>
