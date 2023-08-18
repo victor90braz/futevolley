@@ -8,7 +8,7 @@ export function CreateNewUser() {
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
-		const form = event.target as HTMLFormElement; // Explicitly cast to HTMLFormElement
+		const form = event.target as HTMLFormElement;
 		const formData = new FormData(form);
 		const name = formData.get("name") as string;
 		const email = formData.get("email") as string;
