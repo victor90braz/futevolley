@@ -1,4 +1,4 @@
-import { Card, TextInput, Title } from "@tremor/react";
+import { Button, Card, TextInput, Title } from "@tremor/react";
 import React from "react";
 
 export function CreateNewUser() {
@@ -13,7 +13,7 @@ export function CreateNewUser() {
 				<TextInput placeholder="Github" />
 			</form>
 
-			<button
+			<Button
 				type="submit"
 				style={{
 					marginTop: "16px",
@@ -28,7 +28,7 @@ export function CreateNewUser() {
 				}}
 			>
 				Create User
-			</button>
+			</Button>
 		</Card>
 	);
 }
