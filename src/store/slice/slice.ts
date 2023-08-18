@@ -15,6 +15,10 @@ export const usersSlice = createSlice({
 			const id = action.payload;
 			return state.filter((user) => user.id !== id);
 		},
+		addNewUser: (state, action) => {
+			const id = crypto.randomUUID();
+			return [...state, { id, ...action.payload }];
+		},
 	},
 });
 
