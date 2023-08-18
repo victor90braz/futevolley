@@ -15,6 +15,7 @@ export function CreateNewUser() {
 		const github = formData.get("github") as string;
 
 		handleAddUser({ name, email, github });
+		form.reset();
 	};
 
 	return (
