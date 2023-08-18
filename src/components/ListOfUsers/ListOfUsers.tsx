@@ -10,16 +10,12 @@ import {
 	Title,
 } from "@tremor/react";
 import React from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/store";
-import { deleteUserById } from "../../store/Slice/slice";
+import { useAppSelector } from "../../hooks/store";
+import { usersActions } from "../../hooks/usersActions";
 
 export function ListOfUsers() {
 	const userTemplate = useAppSelector((state) => state.users);
-	const dispatch = useAppDispatch();
-
-	const handleRemoveUser = (id) => {
-		dispatch(deleteUserById(id));
-	};
+	const { handleRemoveUser } = usersActions();
 
 	if (userTemplate.length === 0) {
 		return <div>No users available.</div>;
