@@ -10,10 +10,16 @@ import {
 	Title,
 } from "@tremor/react";
 import React from "react";
-import { useAppSelector } from "../../hooks/store";
+import { useAppDispatch, useAppSelector } from "../../hooks/store";
+import { deleteUserById } from "../../store/Slice/slice";
 
 export function ListOfUsers() {
 	const userTemplate = useAppSelector((state) => state.users);
+	const dispatch = useAppDispatch();
+
+	const handleRemoveUser = (id) => {
+		dispatch(deleteUserById(id));
+	};
 
 	if (userTemplate.length === 0) {
 		return <div>No users available.</div>;
@@ -73,7 +79,7 @@ export function ListOfUsers() {
 									</svg>
 								</button>
 
-								<button type="button">
+								<button type="button" onClick={() => handleRemoveUser(item.id)}>
 									{/* rome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -82,6 +88,7 @@ export function ListOfUsers() {
 										strokeWidth={1.5}
 										stroke="currentColor"
 										className="w-6 h-6"
+										aria-label="Remove element"
 									>
 										<path
 											strokeLinecap="round"
