@@ -1,15 +1,13 @@
-import { Badge, Button, Card, TextInput, Title } from "@tremor/react";
-import React, { useState } from "react";
+import { Button, Card, TextInput, Title } from "@tremor/react";
+import React from "react";
+import { toast } from "sonner";
 import { usersActions } from "../../hooks/usersActions";
 
 export function CreateNewUser() {
 	const { handleAddUser } = usersActions();
-	const [result, setResult] = useState<"ok" | "ko" | null>(null);
 
-	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-
-		setResult(null);
 
 		const form = event.target as HTMLFormElement;
 		const formData = new FormData(form);
@@ -18,12 +16,14 @@ export function CreateNewUser() {
 		const github = formData.get("github") as string;
 
 		if (!name || !email || !github) {
-			setResult("ko");
-		} else {
-			handleAddUser({ name, email, github });
-			setResult("ok");
-			form.reset();
+			toast.error("Fill all the fields");
+			return;
 		}
+
+		await handleAddUser({ name, email, github });
+
+		toast.success(`User ${name} created correctly`);
+		form.reset();
 	};
 
 	return (
@@ -51,10 +51,6 @@ export function CreateNewUser() {
 				>
 					Create User
 				</Button>
-				<span>
-					{result === "ok" && <Badge color="green">User Created</Badge>}
-					{result === "ko" && <Badge color="green">Error field</Badge>}
-				</span>
 			</form>
 		</Card>
 	);
