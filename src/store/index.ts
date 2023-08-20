@@ -25,9 +25,8 @@ const syncWithDataBaseMiddleware: Middleware =
 						throw new Error("Failed to delete user");
 					}
 				})
-				.catch((err) => {
-					console.error(err);
-					console.error("error");
+				.catch(() => {
+					toast.error("An error occurred while deleting the user");
 				});
 		}
 	};
