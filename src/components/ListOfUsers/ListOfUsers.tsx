@@ -24,11 +24,9 @@ export function ListOfUsers() {
 	const keys = Object.keys(userTemplate[0]);
 
 	return (
-		<Card>
-			<Title>
-				Users
-				<Badge>{userTemplate.length}</Badge>
-			</Title>
+		<Card style={{ display: "flex", flexDirection: "column" }}>
+			<Title>Users</Title>
+			<Badge>{userTemplate.length}</Badge>
 			<Table>
 				<TableHead>
 					<TableRow>
