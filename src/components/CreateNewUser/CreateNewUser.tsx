@@ -16,7 +16,7 @@ export function CreateNewUser() {
 		const github = formData.get("github") as string;
 
 		if (!name || !email || !github) {
-			toast.error("Fill all the fields");
+			toast.error("Please fill all the fields");
 			return;
 		}
 
