@@ -21,9 +21,8 @@ const syncWithDataBaseMiddleware: Middleware =
 				.then(async (res) => {
 					if (res.ok) {
 						toast.success(`User ${payload} deleted correctly`);
-					} else {
-						throw new Error("Failed to delete user");
 					}
+					throw new Error("Failed to delete user");
 				})
 				.catch(() => {
 					toast.error("An error occurred while deleting the user");
