@@ -16,22 +16,22 @@ const syncWithDataBaseMiddleware: Middleware =
 		next(action);
 
 		if (type === "users/deleteUserById") {
-			const userIdToRomove = payload;
+			const userIdToRemove = payload;
 			const userToRemove = previousState.users.find(
-				(user) => user.id === userIdToRomove,
+				(user) => user.id === userIdToRemove,
 			);
 
-			fetch(`https://jsonplaceholder.typicode.com/users/${userIdToRomove}`, {
+			fetch(`https://jsonplaceholder.typicode.com/users/${userIdToRemove}`, {
 				method: "DELETE",
 			})
 				.then(async (res) => {
 					if (res.ok) {
-						toast.success(`User ${userIdToRomove} deleted correctly`);
+						toast.success(`User ${userIdToRemove} deleted correctly`);
 					}
 					throw new Error("Failed to delete user");
 				})
 				.catch(() => {
-					toast.error(`Error deleting user ${userIdToRomove}`);
+					toast.error(`Error deleting user ${userIdToRemove}`);
 
 					if (userToRemove) {
 						store.dispatch(rollBackUser(userToRemove));
