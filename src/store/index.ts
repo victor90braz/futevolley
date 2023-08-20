@@ -25,7 +25,7 @@ const syncWithDataBaseMiddleware: Middleware =
 					throw new Error("Failed to delete user");
 				})
 				.catch(() => {
-					toast.error("An error occurred while deleting the user");
+					toast.error(`Error deleting user ${action.payload}`);
 				});
 		}
 	};
